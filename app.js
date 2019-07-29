@@ -2,6 +2,7 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
+    Campground = require("./models/campground"),
     app = express(),
     port = 3000;
 
@@ -9,14 +10,6 @@ mongoose.connect("mongodb://localhost:27017/yelpcamp", {useNewUrlParser: true});
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 
-//Schema Setup
-var campgroundSchema = mongoose.Schema({
-    name: String,
-    image: String,
-    description: String
-});
-
-var Campground = mongoose.model("Campground", campgroundSchema);
 
 //Create a new campground and save to DB
 // Campground.create({
