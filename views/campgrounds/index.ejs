@@ -17,13 +17,15 @@
         </div>
         <% campgrounds.forEach(function(campground){ %>
         <div class="col-md-3 col-sm-6">
-            <figure class="figure">
-                <img class="figure-img img-fluid rounded" src="<%= campground.image %>">
-                <figcaption class="figure-caption text-center"><%= campground.name %></figcaption>
-            </figure>
-            <p class="text-center">
-                <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">More Info</a>
-            </p>
+            <div class="card mb-3">
+                <img class="card-img-top" src="<%= campground.image %>" alt="">
+                <div class="card-body text-center">
+                    <p class="card-title"><strong><%= campground.name %></strong></p>
+                    <p class="card-text">
+                        <a href="/campgrounds/<%= campground._id %>" class="btn btn-primary btn-sm">More Info</a>
+                    </p>
+                </div>
+            </div>
         </div>
         <% }) %>
 
