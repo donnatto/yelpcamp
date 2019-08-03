@@ -4,10 +4,12 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
+// eslint-disable-next-line no-unused-vars
 const Campground = require('./models/campground');
+// eslint-disable-next-line no-unused-vars
 const Comment = require('./models/comment');
 const User = require('./models/user');
-// seedDB = require('./seeds'),
+// const seedDB = require('./seeds');
 const app = express();
 const port = 3000;
 
@@ -22,6 +24,7 @@ mongoose.connect('mongodb://localhost:27017/yelpcamp', {
 });
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
+// eslint-disable-next-line no-undef
 app.use(express.static(__dirname + '/public'));
 
 // Passport configuration

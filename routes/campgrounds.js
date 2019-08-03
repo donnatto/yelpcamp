@@ -1,4 +1,5 @@
 const express = require('express');
+// eslint-disable-next-line new-cap
 const router = express.Router();
 const Campground = require('../models/campground');
 
@@ -16,18 +17,22 @@ router.get('/', function(req, res) {
 });
 
 // CREATE - add new campground to database
-router.post('/', function(req, res) {
+router.post('/', isLoggedIn, function(req, res) {
   // get data from form and add to campgrounds array
   const name = req.body.name;
   const image = req.body.image;
   const desc = req.body.description;
-  const newCamp = {name: name, image: image, description: desc};
+  const author = {
+    id: req.user._id,
+    username: req.user.username,
+  };
+  const newCamp = {name: name, image: image, description: desc, author: author};
   // Create a new campground and save to DB
   Campground.create(newCamp, function(error, camp) {
     if (error) {
       console.log('error: ' + error);
     } else {
-      console.log('New camp added: ' + camp);
+      // console.log('New camp added: ' + camp);
       // redirect back to camps page
       res.redirect('/campgrounds');
     }
@@ -35,7 +40,7 @@ router.post('/', function(req, res) {
 });
 
 // NEW - show form to create a new campground
-router.get('/new', function(req, res) {
+router.get('/new', isLoggedIn, function(req, res) {
   res.render('campgrounds/new');
 });
 
@@ -53,5 +58,19 @@ router.get('/:id', function(req, res) {
         }
       });
 });
+
+/**
+ * Middleware function to check if user is logged in
+ * @param {*} req request param
+ * @param {*} res response param
+ * @param {*} next next action
+ * @return {*} next()
+ */
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/login');
+}
 
 module.exports = router;
