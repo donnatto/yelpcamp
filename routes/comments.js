@@ -42,6 +42,39 @@ router.post('/', isLoggedIn, function(req, res) {
   });
 });
 
+// Edit comment route
+router.get('/:comment_id/edit', checkCommentOwnership, function(req, res) {
+  Comment.findById(req.params.comment_id, function(err, foundComment) {
+    if (err) {
+      res.redirect('back');
+    } else {
+      res.render('comments/edit', {campground_id: req.params.id, comment: foundComment});
+    }
+  });
+});
+
+// Update comment route
+router.put('/:comment_id', checkCommentOwnership, function(req, res) {
+  Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment) {
+    if (err) {
+      res.redirect('back');
+    } else {
+      res.redirect('/campgrounds/' + req.params.id);
+    }
+  });
+});
+
+// Delete comment route
+router.delete('/:comment_id', checkCommentOwnership, function(req, res) {
+  Comment.findByIdAndRemove(req.params.comment_id, function(err) {
+    if (err) {
+      res.redirect('back');
+    } else {
+      res.redirect('/campgrounds/' + req.params.id);
+    }
+  });
+});
+
 /**
  * Middleware function to check if user is logged in
  * @param {*} req request param
@@ -54,6 +87,31 @@ function isLoggedIn(req, res, next) {
     return next();
   }
   res.redirect('/login');
+}
+/**
+ * Check if user owns the campground post
+ * @param {*} req
+ * @param {*} res
+ * @param {*} next
+ */
+function checkCommentOwnership(req, res, next) {
+  // Is logged in?
+  if (req.isAuthenticated()) {
+    Comment.findById(req.params.comment_id, function(err, foundComment) {
+      if (err) {
+        res.redirect('/back');
+      } else {
+        // Does user own the comment?
+        if (foundComment.author.id.equals(req.user._id)) {
+          next();
+        } else {
+          res.redirect('back');
+        }
+      }
+    });
+  } else {
+    res.redirect('back');
+  }
 }
 
 module.exports = router;
