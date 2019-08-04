@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const passport = require('passport');
+const methodOverride = require('method-override');
 const LocalStrategy = require('passport-local');
 // eslint-disable-next-line no-unused-vars
 const Campground = require('./models/campground');
@@ -21,11 +22,13 @@ const indexRoutes = require('./routes/index');
 // seedDB();
 mongoose.connect('mongodb://localhost:27017/yelpcamp', {
   useNewUrlParser: true,
+  useFindAndModify: false,
 });
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 // eslint-disable-next-line no-undef
 app.use(express.static(__dirname + '/public'));
+app.use(methodOverride('_method'));
 
 // Passport configuration
 app.use(require('express-session')({
