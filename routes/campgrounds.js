@@ -35,6 +35,7 @@ router.post('/', middleware.isLoggedIn, function(req, res) {
     } else {
       // console.log('New camp added: ' + camp);
       // redirect back to camps page
+      req.flash('success', 'Campground created!');
       res.redirect('/campgrounds');
     }
   });
