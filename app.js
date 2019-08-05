@@ -24,7 +24,7 @@ const commentRoutes = require('./routes/comments');
 const indexRoutes = require('./routes/index');
 
 // seedDB();
-mongoose.connect('mongodb://localhost:27017/yelpcamp', {
+mongoose.connect('mongodb+srv://donnatto:mariagracia@cluster0-eib0p.mongodb.net/yelpcamp?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useFindAndModify: false,
 });
