@@ -13,7 +13,10 @@ const Comment = require('./models/comment');
 const User = require('./models/user');
 // const seedDB = require('./seeds');
 const app = express();
-const port = 3000;
+let port = process.env.PORT;
+if (port == null || port == '') {
+  port = 3000;
+}
 
 // Requiring routes
 const campgroundRoutes = require('./routes/campgrounds');
