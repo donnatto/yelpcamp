@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 // eslint-disable-next-line new-cap
 const campgroundSchema = mongoose.Schema({
   name: String,
+  price: String,
   image: String,
   description: String,
   author: {
