@@ -4,7 +4,7 @@
     <h1 class="text-center mb-4">Login</h1>
 
     <div class="row justify-content-center">
-        <div class="col-md-5 ">
+        <div class="col-md-6 col-lg-4 ">
             <form action="/login" method="POST">
                 <div class="form-group">
                     <label for="username" class="col-form-label">Username</label>
@@ -18,7 +18,12 @@
                     <input type="submit" class="btn btn-block btn-primary" value="Login"/>
                 </div>
             </form>
-            <a href="/campgrounds">Go Back</a>
+            <div class="row justify-content-between">
+                <a class="col-4" href="/campgrounds">Go Back</a>
+                <span class="col-6 text-right">
+                    Not registered yet? <a href="./register">Sign Up</a>
+                </span>
+            </div>
         </div>
     </div>
 </div>
