@@ -23,7 +23,7 @@ const campgroundRoutes = require('./routes/campgrounds');
 const commentRoutes = require('./routes/comments');
 const indexRoutes = require('./routes/index');
 
-const dbURL = process.env.DATABASEURL || 'mongodb://localhost:217/yelpcamp';
+const dbURL = process.env.DATABASEURL || 'mongodb://localhost:27017/yelpcamp';
 mongoose.connect(dbURL, {
   useNewUrlParser: true,
   useFindAndModify: false,

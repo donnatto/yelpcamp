@@ -1,5 +1,6 @@
 body{
   background-color: #000;
+  padding-bottom: 92px;
 }
 
 #landing-header{
@@ -19,7 +20,6 @@ body{
   top: 0;
   left: 0;
   z-index: 0;
-  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -78,4 +78,23 @@ body{
 footer{
   position: absolute;
   bottom: 0;
+}
+footer p.pt-3{
+  padding-top: 3px!important;
+}
+.footer-links{
+  font-size: 24px;
+  margin-bottom: 3px!important;
+}
+footer.bg-success{
+  background-color: rgb(16, 65, 34)!important;
+}
+.fa-github:hover{
+  color: #6cc644!important;
+}
+.fa-linkedin-square:hover{
+  color: #00a0dc!important;
+}
+.fa-instagram:hover{
+  color: #ffdc80!important;
 }
