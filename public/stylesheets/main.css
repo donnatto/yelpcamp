@@ -58,3 +58,8 @@ footer{
 .fa-instagram:hover{
   color: #ffdc80!important;
 }
+/* Google Maps */
+#map{
+  height: 400px;
+  width: 100%;
+}
