@@ -1,6 +1,6 @@
 body{
   background-color: #000;
-  padding-bottom: 92px;
+  padding-bottom: 66px;
 }
 
 #landing-header{
@@ -83,7 +83,7 @@ footer p.pt-3{
   padding-top: 3px!important;
 }
 .footer-links{
-  font-size: 24px;
+  font-size: 30px;
   margin-bottom: 3px!important;
 }
 footer.bg-success{
