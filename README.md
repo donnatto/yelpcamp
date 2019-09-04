@@ -1,6 +1,6 @@
 # yelpcamp
 >Web page developed with MongoDB, Express, Bootstrap and NodeJS  
->You can visit the site at [yelpcamp.donnatto.me](https://yelpcamp.donnatto.me/)
+>You can visit the site at [camp.donnatto.me](https://camp.donnatto.me/)
 
 This is a project made by me in [The Web Developer Bootcamp](https://www.udemy.com/the-web-developer-bootcamp/) course, teached by Colt Steele.
 
